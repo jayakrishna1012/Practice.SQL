@@ -51,5 +51,5 @@ select * from em em where salary>=50000 and salary<=70000;
 --  Get employee details from employee table whose employee name is “Dinesh”
 select * from em where first_name="Dinesh";
 -- Get employee details from employee table whose employee name are “Dinesh” and “Roy”
-select * from em where first_name="Dinesh" first_name="Roy";
+select * from em where not first_name="Dinesh" and not first_name="Roy";
  

@@ -62,4 +62,69 @@ select  * from em where salary>50000 and salary<70000;
 select * from em order by first_name,salary asc;
 -- Get all the details of the employee whose salary is between 50000 to 70000 and arrange them by their first name as ascending order
 select * from em where salary>50000 and salary<70000 order by first_name asc;
+-- get the names which is staring with 's'
+select first_name from em where first_name like "s%";
+-- Get the names which is ending with 'h'
+select first_name from em where first_name like "%h";
+-- Get the names which contains the letter 'e'
+select first_name from em where first_name like "%e%";
+-- Get the names which having the 3rd letter as 'i'
+select first_name from em where first_name like "__i%";
+-- Get the name which coints 5 letters and strts with letter 'H'
+select first_name from em where first_name like "H____";
+--  Get employee details from employee table whose first name starts with 's'
+select *from em where first_name like"s%";
+--  Get employee details from employee table whose first name contains 'v'
+select *from  em where  first_name like "%v%";
+-- Get employee details from employee table whose first name ends with 'n'
+select * from em where first_name like "%n";
+--  Get employee details from employee table whose first name ends with 'n' and name contains 4 letters
+select * from em where first_name like"___n";
+-- Get employee details from employee table whose first name starts with 'J' and name contains 4 letters
+select * from em where first_name like "J___";
+--  Get employee details from employee table who’s Salary greater than 60000
+select * from em where salary>60000;
+-- Get employee details from employee table who’s Salary less than 80000
+select * from em where salary<80000;
+-- Get employee details from employee table who’s Salary between 50000 and 80000
+select * from em where salary between 50000 and 80000;
+--  Get employee details from employee table whose name is venkatesh and ragavi
+select * from em where first_name = "venkatesh" or first_name = "ragavi";
+-- Get employee details from employee table hose joining year is “2015”
+select * from em where year(joining_date)="2015";
+-- Get employee details from employee table whose joining month is “January”
+select * from em where month (joining_date)="january";
+-- Get employee details from employee table who joined before January 1st 2017
+select * from em where year(joining_date) <"2017/01/01";
+--  Get employee details from employee table who joined after January 31st 2016
+select * from em where year(joining_date)  >"2016/01/31";
+
+-- sum
+select sum(salary) from em;
+-- average
+select avg(salary) from em;
+-- count
+select count(salary) from em;
+-- maximum
+select max(salary) from em;
+-- minimum
+select min(salary) from em;
+-- Get the number of employees in each department
+select department,max(salary) from em group by department having sum(salary)>100000;
+-- Get department,total salary with respect to a department from employee table
+select department,sum(salary) from em group by department;
+-- Get department,total salary with respect to a department from employee table order by total salary descending
+select department,sum(salary) from em group by department order by  sum(salary) desc;
+-- Get department,no of employees in a department,total salary with respect to a department from employee table order by total salary descending
+select department,count(first_name),sum(salary) from em group by department order by sum(salary) desc; 
+-- . Get department wise average salary from employee table order by salary ascending
+select department, avg(salary) from em group by department order by avg(salary)asc;
+-- Get department wise maximum salary from employee table order by salary ascending
+select department,max(salary) from em group by department order by max(salary) asc;
+-- Get department wise minimum salary from employee table order by salary ascending
+select department,min(salary) from em group by department order by min(salary) asc;
+-- Select no of employees joined with respect to year and month from employee table
+select year(joining_date),month(joining_date),count(employee_id) from em group by year(joing_date),month(joining_date);
+--  Select department,total salary with respect to a department from employee table where total salary greater than 800000 order by Total_Salary descending
+select department, sum(salary) from em group by department having sum(salary) order by sum(salary) desc;
 
